@@ -10,6 +10,7 @@ export interface RequestWithBody<T> extends Request {
 }
 
 enum ControllerErrors {
+  invalidId = 'Id must have 24 hexadecimal characters',
   internal = 'Internal Server Error',
   notFound = 'Object not found',
   requiredId = 'Id is required',
@@ -49,5 +50,10 @@ abstract class Controller<T> {
     req: Request<{ id: string }>,
     res: Response< T | null>
   ): Promise<Response< T | null> | void>;
+
+  abstract delete(
+    req: Request< { id: string } >,
+    res: Response< T | ResponseError >
+  ): Promise<typeof res>;
 }
 export default Controller;

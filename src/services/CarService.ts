@@ -23,6 +23,9 @@ class CarService extends Service<Car> {
     }
     return this.model.update(id, obj);
   };
+
+  delete = async (id: string): Promise<Car | null | ServiceError> => this.model
+    .delete(id);
 }
 
 export default CarService;

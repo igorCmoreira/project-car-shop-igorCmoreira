@@ -43,7 +43,7 @@ class CarController extends Controller<Car> {
     const { id } = req.params;
     if (id.length < 24) {
       return res.status(400)
-        .json({ error: 'Id must have 24 hexadecimal characters' });
+        .json({ error: this.errors.invalidId });
     }
     try {
       const car = await this.service.readOne(id);
@@ -64,7 +64,7 @@ class CarController extends Controller<Car> {
     }
     if (id.length < 24) {
       return res.status(400)
-        .json({ error: 'Id must have 24 hexadecimal characters' });
+        .json({ error: this.errors.invalidId });
     }
 
     const { body } = req;
@@ -78,6 +78,27 @@ class CarController extends Controller<Car> {
     if ('error' in updated) return res.status(400).end();
 
     return res.status(200).json(updated);
+  }
+
+  async delete(
+    req:Request< { id:string }>,
+    res:Response<Car | ResponseError>,
+  ): Promise<typeof res> {
+    const { id } = req.params;
+    if (id.length < 24) {
+      return res.status(400)
+        .json({ error: this.errors.invalidId });
+    }
+    try {
+      const deleted = await this.service.delete(id);
+      if (!deleted) {
+        return res.status(404).json({ error: this.errors.notFound });
+      }
+      if ('error' in deleted) return res.status(400).json(deleted);
+      return res.status(204).json(deleted);
+    } catch (error) {
+      return res.status(500).json({ error: this.errors.internal });
+    }
   }
 }
 
