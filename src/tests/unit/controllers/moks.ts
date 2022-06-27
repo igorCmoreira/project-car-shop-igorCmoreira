@@ -1,21 +1,21 @@
 export const carMoksdb = [
   {
-		"_id": "62b8bda7bfcd1a2756852d66",
-		"model": "Ferrari Maranello",
-		"year": 1963,
-		"color": "red",
-		"buyValue": 3500000,
-		"doorsQty": 2,
-		"seatsQty": 2
+		_id: "62b8bda7bfcd1a2756852d66",
+		model: "Ferrari Maranello",
+		year: 1963,
+		color: "red",
+		buyValue: 3500000,
+		doorsQty: 2,
+		seatsQty: 2
 	},
 	{
-		"_id": "62b8be56bfcd1a2756852d69",
-		"model": "fiat Uno",
-		"year": 1963,
-		"color": "black",
-		"buyValue": 1000,
-		"doorsQty": 2,
-		"seatsQty": 5
+		_id: "62b8be56bfcd1a2756852d69",
+		model: "fiat Uno",
+		year: 1963,
+		color: "black",
+		buyValue: 1000,
+		doorsQty: 2,
+		seatsQty: 5
 	}
 ]
 // moto
@@ -25,6 +25,24 @@ export const carMoksdb = [
 // buyValue: 9000,
 // category: 'Street',
 // engineCapacity: 125,
+
+export const upCar = {
+  model: "Ferrari Maranello",
+  year: 1964,
+  color: "red",
+  buyValue: 3500000,
+  seatsQty: 2,
+  doorsQty: 2
+}
+
+export const motoOK = {
+  model: 'Yamaha NEO',
+  year: 2022,
+  color: 'Blue',
+  buyValue: 9000,
+  category: 1,
+  engineCapacity: 125,
+}
 
 export const motoMoksdb = [{
   "_id": "62b8beffbfcd1a2756852d6c",
